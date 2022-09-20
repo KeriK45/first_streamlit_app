@@ -1,7 +1,8 @@
 import streamlit as sl
 import pandas as pd
 
-my_fruit_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
+my_fruit_list_df = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
+my_fruit_list = my_fruit_list_df.sort_values(by=["Fruit"])
 
 # Setting index to allow names in fruit picker
 my_fruit_list = my_fruit_list.set_index('Fruit')
