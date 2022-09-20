@@ -17,7 +17,7 @@ sl.text('🥑🍞 Avocado Toast')
 sl.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 # Pick list for fruit smoothie
-sl.multiselect("Pick some fruits:", list(my_fruit_list.index))
+sl.multiselect("Pick some fruits:", list(my_fruit_list.index), ['Avocado','Strawberries'])
 
 # Displaying table on the page 
 sl.dataframe(my_fruit_list)
