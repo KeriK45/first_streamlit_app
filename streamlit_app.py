@@ -24,9 +24,12 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # Displaying table on the page 
 sl.dataframe(fruits_to_show)
 
-# Displaying fruityvice api response
+# Section for displaying fruityvice api response
 sl.header('Fruityvice Fruit Advice!')
-fruityvice_response = rq.get("https://fruityvice.com/api/fruit/watermelon")
+fruit_choice = sl.text_input('What fruit would you like information about?', 'Kiwi')
+sl.write('The user entered', fruit_choice)
+
+fruityvice_response = rq.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 
 # Normalize json from response
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
