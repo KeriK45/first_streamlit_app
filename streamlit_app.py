@@ -47,5 +47,5 @@ sl.header("The fruit load list contains: ")
 sl.dataframe(my_data_row)
 
 # Section for adding fruit
-add_my_fruit = sl.text_input('What fruit would you like to add?', 'jackfruit')
+add_my_fruit = sl.text_input('What fruit would you like to add?')
 sl.write('Thanks for adding ', add_my_fruit)
