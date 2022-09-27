@@ -45,3 +45,7 @@ my_cur.execute("SELECT * FROM fruit_load_list")
 my_data_row = my_cur.fetchall()
 sl.header("The fruit load list contains: ")
 sl.dataframe(my_data_row)
+
+# Section for adding fruit
+add_my_fruit = sl.text_input('What fruit would you like to add?', 'jackfruit')
+sl.write('Thanks for adding ', fruit_choice)
