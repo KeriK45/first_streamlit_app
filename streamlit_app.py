@@ -1,6 +1,7 @@
 import streamlit as sl
 import pandas as pd
 import requests as rq
+import snowflake.connector as sc
 
 my_fruit_list_df = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 my_fruit_list = my_fruit_list_df.sort_values(by=["Fruit"])
