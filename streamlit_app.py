@@ -28,16 +28,16 @@ sl.dataframe(fruits_to_show)
 
 # Section for displaying fruityvice api response
 sl.header('Fruityvice Fruit Advice!')
-fruit_choice = sl.text_input('What fruit would you like information about?', 'Kiwi')
-sl.write('The user entered', fruit_choice)
-
-fruityvice_response = rq.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-
-# Normalize json from response
-fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
-
-# Output normalized data as table
-sl.dataframe(fruityvice_normalized)
+try:
+  fruit_choice = sl.text_input('What fruit would you like information about?', 'Kiwi')
+  if not fruit_choice:
+    sl.error("Please select a fruit to get information.")
+  else:
+    fruityvice_response = rq.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+    fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+    sl.dataframe(fruityvice_normalized)
+except URLError as e:
+  sl.error()
 
 # temporary
 sl.stop()
