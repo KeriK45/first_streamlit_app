@@ -44,17 +44,23 @@ try:
 except URLError as e:
   sl.error()
 
-# temporary
-sl.stop()
-
 # Snowflake connection
-my_cnx = sc.connect(**sl.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT * FROM fruit_load_list")
-my_data_row = my_cur.fetchall()
 sl.header("The fruit load list contains: ")
-sl.dataframe(my_data_row)
+# related functions
+def get_fruit_load_list():
+  with my_cnx.cursor() as my_cur:
+    my_cur.execute("SELECT * FROM fruit_load_list")
+    return my_cur.fetchall()
+
+# Button to load the fruit
+if sl.button('Get Fruit Load List'): 
+  my_cnx = sc.connect(**sl.secrets["snowflake"])
+  my_data_rows = get_fruit_load_list()
+  sl.dataframe(my_data_rows)
 
 # Section for adding fruit
 add_my_fruit = sl.text_input('What fruit would you like to add?')
 sl.write('Thanks for adding ', add_my_fruit)
+
+# temporary
+sl.stop()
